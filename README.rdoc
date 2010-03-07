@@ -1,6 +1,6 @@
 = dm-paginator
 
-Description goes here.
+A simple paginator for ruby's DataMapper.
 
 == Note on Patches/Pull Requests
  
