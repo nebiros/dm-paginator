@@ -30,14 +30,14 @@ module DataMapper
     def limit_page page = nil, options = {}
       if page.is_a?( Hash )
         options = page
-      elsif page.nil?
+      elsif page.blank?
         options[:page] = DataMapper::Paginator.defaults[:page]
       else
         options[:page] = page.to_i
       end
 
-      options[:page] = options[:page] || DataMapper::Paginator.defaults[:page]
-      options[:limit] = options[:limit] || DataMapper::Paginator.defaults[:limit]
+      options[:page] = options[:page].to_i || DataMapper::Paginator.defaults[:page]
+      options[:limit] = options[:limit].to_i || DataMapper::Paginator.defaults[:limit]
       options[:offset] = options[:limit] * ( options[:page] - 1 )
       options[:order] = options[:order] || DataMapper::Paginator.defaults[:order]
       limit options

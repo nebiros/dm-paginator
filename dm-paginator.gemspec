@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Juan Felipe Alvarez Saldarriaga"]
-  s.date = %q{2010-03-06}
+  s.date = %q{2010-03-07}
   s.description = %q{Simple DataMapper paginator}
   s.email = %q{nebiros@gmail.com}
   s.extra_rdoc_files = [
@@ -39,11 +39,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<dm-core>, [">= 0.10.1"])
+      s.add_development_dependency(%q<dm-aggregates>, [">= 0.10.1"])
     else
       s.add_dependency(%q<dm-core>, [">= 0.10.1"])
+      s.add_dependency(%q<dm-aggregates>, [">= 0.10.1"])
     end
   else
     s.add_dependency(%q<dm-core>, [">= 0.10.1"])
+    s.add_dependency(%q<dm-aggregates>, [">= 0.10.1"])
   end
 end
 

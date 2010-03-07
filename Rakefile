@@ -12,6 +12,7 @@ begin
     gem.homepage = "http://github.com/nebiros/dm-paginator"
     gem.authors = ["Juan Felipe Alvarez Saldarriaga"]
     gem.add_development_dependency "dm-core", ">= 0.10.1"
+    gem.add_development_dependency "dm-aggregates", ">= 0.10.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.files = Dir["lib/**/*.rb"]
     gem.version = DataMapper::Paginator::VERSION
