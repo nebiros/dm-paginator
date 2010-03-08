@@ -1,5 +1,4 @@
 require "dm-core"
-require "dm-aggregates"
 require "dm-paginator/paginator"
 require "dm-paginator/defaults"
 require "dm-paginator/main"

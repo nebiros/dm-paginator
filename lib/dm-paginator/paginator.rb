@@ -16,7 +16,7 @@ module DataMapper
         :offset => options[:offset],
         :order => [options[:order]]
       }.merge( query ) )
-      options.merge! :count => count( query ), :page => page
+      options.merge! :count => calculate_total_records( query ), :page => page
       collection.paginator = DataMapper::Paginator::Main.new options
       collection
     end
@@ -41,6 +41,22 @@ module DataMapper
       options[:offset] = options[:limit] * ( options[:page] - 1 )
       options[:order] = options[:order] || DataMapper::Paginator.defaults[:order]
       limit options
+    end
+
+    private
+
+    ##
+    # Calculate total records
+    #
+    # @param [Hash] query
+    # @return Integer
+    def calculate_total_records query
+      # Remove those keys from the query
+      query.delete :page
+      query.delete :limit
+      query.delete :offset
+      collection = new_collection scoped_query( query )
+      collection.count.to_i
     end
   end
 end
