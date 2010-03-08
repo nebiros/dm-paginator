@@ -30,8 +30,7 @@ Gem::Specification.new do |s|
   s.summary = %q{A simple DataMapper paginator}
   s.test_files = [
     "test/helper.rb",
-     "test/test_dm-paginator.rb",
-     "examples/paginator.rb"
+     "test/test_dm-paginator.rb"
   ]
 
   if s.respond_to? :specification_version then
