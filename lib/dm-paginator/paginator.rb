@@ -6,7 +6,7 @@ module DataMapper
     # Limit results.
     #
     # @param [Hash] options
-    # @return Collection
+    # @return [Collection]
     def limit options = {}
       # Remove this key if we come from limit_page method.
       page = options.delete :page
@@ -26,7 +26,7 @@ module DataMapper
     #
     # @param [Integer, Hash] page
     # @param [Hash] options
-    # @return Collection
+    # @return [Collection]
     def limit_page page = nil, options = {}
       if page.is_a?( Hash )
         options = page
@@ -34,10 +34,10 @@ module DataMapper
         options[:page] = page.to_i
       end
 
-      options[:page] = options[:page].to_i > 0 ? options[:page] : DataMapper::Paginator.defaults[:page]
-      options[:limit] = options[:limit].to_i || DataMapper::Paginator.defaults[:limit]
+      options[:page] = options[:page].to_i > 0 ? options[:page] : DataMapper::Paginator.default[:page]
+      options[:limit] = options[:limit].to_i || DataMapper::Paginator.default[:limit]
       options[:offset] = options[:limit] * ( options[:page] - 1 )
-      options[:order] = options[:order] || DataMapper::Paginator.defaults[:order]
+      options[:order] = options[:order] || DataMapper::Paginator.default[:order]
       limit options
     end
 
@@ -47,7 +47,7 @@ module DataMapper
     # Calculate total records
     #
     # @param [Hash] query
-    # @return Integer
+    # @return [Integer]
     def calculate_total_records query
       # Remove those keys from the query
       query.delete :page

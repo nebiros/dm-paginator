@@ -1,7 +1,13 @@
 require "dm-core"
 require "dm-paginator/paginator"
-require "dm-paginator/defaults"
+require "dm-paginator/default"
 require "dm-paginator/main"
+require "dm-paginator/control"
+require "dm-paginator/control/control_helper_abstract"
+require "dm-paginator/control/all"
+require "dm-paginator/control/elastic"
+require "dm-paginator/control/jumping"
+require "dm-paginator/control/sliding"
 
 DataMapper::Model.append_extensions DataMapper::Paginator
 DataMapper::Collection.send :include, DataMapper::Paginator
