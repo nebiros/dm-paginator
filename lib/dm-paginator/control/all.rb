@@ -15,8 +15,9 @@ module DataMapper
           @options = options
         end
 
-        def draw
-          pages = pages_in_range 1, paginator.count
+        def pages page_range = nil
+          return unless paginator.page_count > 0
+          return pages_in_range 1, paginator.count
         end
       end
     end

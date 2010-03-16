@@ -12,10 +12,26 @@ module DataMapper
 
           @paginator = paginator
           @options = options
+          @options[:page_range] = options[:page_range].to_i || DataMapper::Paginator::default[:page_range]
         end
 
-        def draw
-          p "All baby!"
+        def pages page_range = nil
+          return unless paginator.page_count > 0
+          
+          page_range = options[:page_range] || page_range
+          page_number = paginator.page
+
+          delta = page_number % page_range
+
+          if delta == 0
+            delta = page_range
+          end
+
+          offset = page_number - delta
+          lower = offset + 1
+          upper = offset + page_range
+
+          return pages_in_range lower, upper
         end
     end
   end

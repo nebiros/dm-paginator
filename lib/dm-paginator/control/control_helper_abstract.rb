@@ -2,9 +2,9 @@ module DataMapper
   module Paginator
     module ControlHelperAbstract      
       ##
-      # This method draw the pagination control.
+      # Get pages using a pagination style.
       #
-      def draw
+      def pages page_range = nil
         raise NotImplementedError, "draw method not implemented"
       end
 
@@ -42,14 +42,6 @@ module DataMapper
         end
 
         page_number.to_i
-      end
-
-      def next_link
-        raise NotImplementedError, "next_link method not implemented"
-      end
-
-      def previous_link
-        raise NotImplementedError, "previous_link method not implemented"
       end
     end
   end

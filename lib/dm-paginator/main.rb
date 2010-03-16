@@ -8,10 +8,10 @@ module DataMapper
         :previous_page
 
       def initialize options = {}
-        @count = options[:count]
-        @page = options[:page]
-        @limit = options[:limit]
-        @offset = options[:offset]
+        @count = options[:count].to_i
+        @page = options[:page].to_i
+        @limit = options[:limit].to_i
+        @offset = options[:offset].to_i
         @page_count = calculate_page_count
         @next_page = page.to_i + 1 unless page.to_i + 1 >= page_count
         @previous_page = page.to_i - 1 unless page.to_i - 1 <= 1

@@ -11,7 +11,7 @@ module DataMapper
         case kind.downcase!
           when "sliding"
             return DataMapper::Paginator::ControlHelper::Sliding.new paginator, options
-          when "all", kind.blank?
+          when "all", kind.empty?
             return DataMapper::Paginator::ControlHelper::All.new paginator, options
         end
       end
