@@ -1,6 +1,7 @@
 module DataMapper
   module Paginator
-    class Jumping < Control
+    module ControlHelper
+      class Jumping
         include DataMapper::Paginator::ControlHelperAbstract
 
         attr_reader :paginator, :options
@@ -17,7 +18,7 @@ module DataMapper
 
         def pages page_range = nil
           return unless paginator.page_count > 0
-          
+
           page_range = options[:page_range] || page_range
           page_number = paginator.page
 
@@ -33,6 +34,7 @@ module DataMapper
 
           return pages_in_range lower, upper
         end
+      end
     end
   end
 end

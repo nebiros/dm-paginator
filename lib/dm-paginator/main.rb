@@ -18,14 +18,32 @@ module DataMapper
       end
 
       ##
-      # Draw pagination controls.
+      # Draw pagination controls using a partial (whatever erb file).
       #
       # @param [String] kind
+      # @param [String] erb
       # @param [Hash] options
       # @return [String]
-      def to_html kind, options = {}
+      def to_html kind, erb, options = {}
+        if !File.file?( erb )
+          raise IOError, "erb files doesn't exists"
+        end
+
+        template = ERB.new File.read( erb ), 0, "%<>"
+
         control = DataMapper::Paginator::Control.factory self, kind.to_s, options
-        control.draw
+        @pages = control.pages
+        template.result binding
+      end
+
+      ##
+      # Get pages range using a pagination control style.
+      #
+      # @param [String] kind
+      #
+      def pages kind, options = {}
+        control = DataMapper::Paginator::Control.factory self, kind.to_s, options
+        control.pages
       end
 
       private

@@ -9,7 +9,7 @@ module DataMapper
       end
 
       ##
-      # Return pages in range
+      # Return pages in range.
       #
       # @param [Integer] lower
       # @param [Integer] upper
@@ -28,7 +28,7 @@ module DataMapper
 
       ##
       # Normalize page number, brings the page number in range of the
-      # paginator
+      # paginator.
       #
       # @param [Integer] page_number
       # @return [Integer]

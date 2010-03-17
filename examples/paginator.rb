@@ -24,7 +24,7 @@ def test_paginator
 	p "count: " + @items.paginator.count.to_s
 	p "page_count: " + @items.paginator.page_count.to_s
 
-  p @items.paginator.to_html "All"
+  p @items.paginator.to_html "All", "control.erb"
 end
 
 test_paginator
